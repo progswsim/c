@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <iostream>
+#include <fstream>
 #include <string>
 
 using namespace std;
@@ -15,7 +16,7 @@ class owoc
           
              
              
-             virtual void obierz(){};
+             virtual string obierz(){};
              virtual void zasadz(){};
 };
 
@@ -35,9 +36,9 @@ class banan : public owoc
              {
                         dlugosc = in_dlugosc;
              }
-             void obierz()
+             string obierz()
              {
-                  cout << "Obrano banana.\n";
+                  return "Obrano banana.\n";
              }
              
              void zasadz()
@@ -63,9 +64,9 @@ class jablko : public owoc
                         iloscPestek = 5;
              }
              
-             void obierz()
+             string obierz()
              {
-                  cout << "Obrano jablko.\n";
+                  return "Obrano jablko.\n";
              }
              
              void zasadz()
@@ -90,9 +91,10 @@ class truskawka : public owoc
              {
                         iloscPlamek = 30;
              }
-             void obierz()
+             string obierz()
              {
-                  cout << "Obrano truskawke.\n";
+                  return "Obrano truskawke.\n";
+                  
              }
              
              void zasadz()
@@ -117,25 +119,32 @@ int main(int argc, char *argv[])
     banan b1;
     truskawka t1;
     
+    string plik;
+    cout << "\nPodaj nazwe pliku: ";
+    cin >> plik;
+    ofstream pisz(plik.c_str());
     for(i=0; i<10;i++)
     {
     rnd = rand() % 300;
     if(rnd<100){         
         w[i] = &j1;
-        w[i] -> obierz();
+        pisz << w[i] -> obierz();
+        
     }
     if(rnd>100 && rnd < 200){         
         w[i] = &b1;
-        w[i] -> obierz();
+        pisz << w[i] -> obierz();
     }
     
      if(rnd > 200){         
         w[i] = &t1;
-        w[i] -> obierz();
+        pisz << w[i] -> obierz();
     }
     }
   
-
+  
+  
+  
     
     
     system("PAUSE");
