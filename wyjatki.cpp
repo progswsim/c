@@ -127,6 +127,8 @@ int main(int argc, char *argv[])
     cout << "p2 i p3, wspolrzedne mniejszego\nX: "<<p4.wspX<<"\nY: "<<p4.wspY<<"\n";
     
     
+    
+    //Wyjatki
     Punkt p5 = Punkt(20, 100);
     
     try
